@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 func main() {
@@ -90,5 +91,20 @@ func main() {
 	greats := [5]string{"Kitano", "Kobayashi", "Kurosawa", "Miyazaki", "Ozu"}
 	fmt.Printf("%v %q\n", greats, greats)
 	// Result: [Kitano Kobayashi Kurosawa Miyazaki Ozu] ["Kitano" "Kobayashi" "Kurosawa" "Miyazaki" "Ozu"]
+
+	// Byte slices are special. Integer verbs like %d print the elements in
+	// that format. The %s and %q forms treat the slice like a string. The %x
+	// verb has a special form with the space flag that puts a space between
+	// the bytes.
+	cmd := []byte("a⌘")
+	fmt.Printf("%v %d %s %q %x % x\n", cmd, cmd, cmd, cmd, cmd, cmd)
+	// Result: [97 226 140 152] [97 226 140 152] a⌘ "a⌘" 61e28c98 61 e2 8c 98
+
+	// Types that implement Stringer are printed the same as strings. Because
+	// Stringers return a string, we can print them using a string-specific
+	// verb such as %q.
+	now := time.Unix(123456789, 0).UTC() // time.Time implements fmt.Stringer.
+	fmt.Printf("%v %q\n", now, now)
+	// Result: 1973-11-29 21:33:09 +0000 UTC "1973-11-29 21:33:09 +0000 UTC"
 
 }
