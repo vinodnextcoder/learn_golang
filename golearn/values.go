@@ -65,4 +65,30 @@ func main() {
 	fmt.Printf("%v %#v\n", isLegume, isLegume)
 	// Result: map[dachshund:false peanut:true] map[string]bool{"dachshund":false, "peanut":true}
 
+	// Structs formatted with %v show field values in their default formats.
+	// The %+v form shows the fields by name, while %#v formats the struct in
+	// Go source format.
+	person := struct {
+		Name string
+		Age  int
+	}{"Kim", 22}
+	fmt.Printf("%v %+v %#v\n", person, person, person)
+	// Result: {Kim 22} {Name:Kim Age:22} struct { Name string; Age int }{Name:"Kim", Age:22}
+
+	// The default format for a pointer shows the underlying value preceded by
+	// an ampersand. The %p verb prints the pointer value in hex. We use a
+	// typed nil for the argument to %p here because the value of any non-nil
+	// pointer would change from run to run; run the commented-out Printf
+	// call yourself to see.
+	pointer := &person
+	fmt.Printf("%v %p\n", pointer, (*int)(nil))
+	// Result: &{Kim 22} 0x0
+	// fmt.Printf("%v %p\n", pointer, pointer)
+	// Result: &{Kim 22} 0x010203 // See comment above.
+
+	// Arrays and slices are formatted by applying the format to each element.
+	greats := [5]string{"Kitano", "Kobayashi", "Kurosawa", "Miyazaki", "Ozu"}
+	fmt.Printf("%v %q\n", greats, greats)
+	// Result: [Kitano Kobayashi Kurosawa Miyazaki Ozu] ["Kitano" "Kobayashi" "Kurosawa" "Miyazaki" "Ozu"]
+
 }
