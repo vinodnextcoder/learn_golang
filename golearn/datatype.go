@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func main11() {
 	var a bool = true    // Boolean
 	var b int = 5        // Integer
 	var c float32 = 3.14 // Floating point number
