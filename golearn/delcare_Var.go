@@ -6,7 +6,7 @@ import (
 
 const PI = 3.14
 
-func main() {
+func vartest() {
 	var student1 string = "John" //type is string
 	var student2 = "Jane"        //type is inferred
 	x := 2                       //type is inferred

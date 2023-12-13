@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func valutest() {
 	var i int
 
 	fmt.Print("Type a number: ")
