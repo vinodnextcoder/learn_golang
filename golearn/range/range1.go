@@ -9,6 +9,7 @@ func main() {
 
 	ticker := time.NewTicker(500 * time.Millisecond)
 	done := make(chan bool)
+	fmt.Println(done, ticker)
 
 	go func() {
 		for {
