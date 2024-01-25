@@ -6,6 +6,20 @@ import "fmt"
 // and receive those values into another goroutine.
 
 
+
+func mainbuf1() {
+
+    messages := make(chan string, 2)
+
+    messages <- "buffered"
+    messages <- "channel"
+
+    fmt.Println(<-messages)
+    fmt.Println(<-messages)
+    
+}
+
+
 func main() {
 
     messages := make(chan string)
@@ -14,4 +28,5 @@ func main() {
 
     msg := <-messages
     fmt.Println(msg)
+    mainbuf1()
 }
